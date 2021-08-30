@@ -12,8 +12,11 @@ trait HasTags
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
-    public function tag(string $name): Tag
+    public function tag(string $name, ?string $collection = null): Tag
     {
-        return $this->tags()->firstOrCreate(['name' => $name]);
+        return $this->tags()->firstOrCreate([
+            'name' => $name,
+            'collection' => $collection
+        ]);
     }
 }
