@@ -14,9 +14,11 @@ trait HasTags
 
     public function tag(string $name, ?string $collection = null): Tag
     {
-        return $this->tags()->firstOrCreate([
+        $tag = Tag::firstOrCreate([
             'name' => $name,
-            'collection' => $collection
+            'collection' => $collection,
         ]);
+
+        $this->tags()->attach($tag);
     }
 }
