@@ -19,6 +19,6 @@ trait HasTags
             'collection' => $collection,
         ]);
 
-        $this->tags()->attach($tag);
+        return $this->tags()->attach($tag);
     }
 }
